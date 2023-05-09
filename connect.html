@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect to Twitch</title>
+</head>
+<body>
+<!--
+ API reference: https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#authorization-code-grant-flow
+    parameter:
+        response_type: Must be set to "code"
+        redirect_uri: Your app’s registered redirect URI. The authorization code is sent to this URI.
+        scope: A space-delimited list of scopes. The APIs that you’re calling will identify the scopes you must list. You must URL encode the list.
+        state: 	Although optional, you are strongly encouraged to pass a state string to help prevent Cross-Site Request Forgery (CSRF) attacks. The server returns this string to you in your redirect URI (see the state parameter in the fragment portion of the URI). If this string doesn’t match the state string that you passed, ignore the response. The state string should be randomly generated and unique for each OAuth request.
+
+    Request:
+        https://id.twitch.tv/oauth2/authorize
+        ?response_type=code
+        &client_id=hof5gwx0su6owfnys0nyan9c87zr6t
+        &redirect_uri=http://localhost:3000
+        &scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls
+        &state=c3ab8aa609ea11e793ae92361f002671
+
+    Response success:
+        http://localhost:3000/
+        ?code=gulfwdmys5lsm6qyz4xiz9q32l10
+        &scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls
+        &state=c3ab8aa609ea11e793ae92361f002671
+
+    Response error:
+        http://localhost:3000/
+        ?error=access_denied
+        &error_description=The+user+denied+you+access
+        &state=c3ab8aa609ea11e793ae92361f002671
+ -->
+<a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect to Twitch</a>
+</body>
+</html>
